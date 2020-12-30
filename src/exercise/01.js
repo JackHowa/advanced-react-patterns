@@ -1,6 +1,3 @@
-// Context Module Functions
-// http://localhost:3000/isolated/exercise/01.js
-
 import * as React from 'react'
 import {dequal} from 'dequal'
 
@@ -71,6 +68,10 @@ function useUser() {
     throw new Error(`useUser must be used within a UserProvider`)
   }
   return context
+}
+
+function updateUser(dispatch, user, updates) {
+  return ''
 }
 
 // 🐨 add a function here called `updateUser`
