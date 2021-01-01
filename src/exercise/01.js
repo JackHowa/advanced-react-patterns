@@ -71,7 +71,7 @@ function useUser() {
 }
 
 async function updateUser(dispatch, user, updates) {
-  dispatch({type: 'start update', updates: formState})
+  dispatch({type: 'start update'})
   try {
     const updatedUser = await userClient.updateUser(user, updates)
     dispatch({type: 'finish update', updatedUser})
