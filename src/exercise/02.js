@@ -8,6 +8,13 @@ function Toggle({children}) {
 
   // react children map just maps over components
   return React.Children.map(children, (child) => {
+    /*
+    React.cloneElement(
+      element,
+      [props],
+      [...children]
+    )
+    */
     // clone element takes in component and the props
     return React.cloneElement(child, {on, toggle})
   })
