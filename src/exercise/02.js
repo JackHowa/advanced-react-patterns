@@ -16,7 +16,16 @@ function Toggle({children}) {
     )
     */
     // clone element takes in component and the props
-    return React.cloneElement(child, {on, toggle})
+
+    // seems hacky but works without warning
+    // typically react element's child's types will be funcs 
+    if (typeof child.type === 'string') {
+      return child
+    }
+
+    const newChild = React.cloneElement(child, {on, toggle})
+    console.log(newChild)
+    return newChild
   })
 }
 
@@ -30,6 +39,9 @@ function App() {
   return (
     <div>
       <Toggle>
+        {/* extra credit */}
+        <span>Hello</span>
+        <br></br>
         <ToggleOn>The button is on</ToggleOn>
         <ToggleOff>The button is off</ToggleOff>
         <ToggleButton />
