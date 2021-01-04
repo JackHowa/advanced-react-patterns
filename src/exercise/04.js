@@ -13,9 +13,13 @@ function useToggle() {
     onClick: toggle
   }
 
-  const getTogglerProps = (incomingOverrides) => ({
-    ...togglerProps,
-    ...incomingOverrides
+  const getTogglerProps = ({onClick, ...props}) => ({
+    'aria-pressed': on,
+    onClick: () => {
+      onClick();
+      toggle();
+    },
+    ...props
   })
 
   return {on, toggle, togglerProps, getTogglerProps}
