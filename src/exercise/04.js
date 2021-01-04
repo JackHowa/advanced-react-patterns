@@ -4,13 +4,13 @@
 import * as React from 'react'
 import {Switch} from '../switch'
 
-// function callAll(...fns) {
-//   return (...args) => {
-//     fns.forEach(fn => {
-//       fn && fn(...args)
-//     })
-//   }
-// }
+function callAll(...fns) {
+  return (...args) => {
+    fns.forEach(fn => {
+      fn && fn(...args)
+    })
+  }
+}
 
 function useToggle() {
   const [on, setOn] = React.useState(false)
@@ -25,11 +25,7 @@ function useToggle() {
   // defaults incoming props to an empty obj
   const getTogglerProps = ({onClick, ...props} = {}) => ({
     'aria-pressed': on,
-    onClick: () => {
-      // if onclick incoming exists
-      onClick && onClick();
-      toggle();
-    },
+    onClick: callAll(onClick, toggle),
     ...props
   })
 
